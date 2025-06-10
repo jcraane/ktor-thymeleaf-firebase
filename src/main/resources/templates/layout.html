@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${title}">Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+<!--    <link rel="stylesheet" href="/static/css/tailwind.css">-->
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="bg-gray-800 text-white w-64 flex-shrink-0 hidden md:block">
+            <div class="p-4">
+                <!DOCTYPE html>
+                <html lang="en" th:fragment="layout (content, title, breadcrumb)">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title th:replace="${title}">Admin Dashboard</title>
+                    <script src="https://cdn.tailwindcss.com"></script>
+                    <!-- Tailwind CSS -->
+                    <!--    <link rel="stylesheet" href="/static/css/tailwind.css">-->
+                </head>
+                <body class="bg-gray-100 font-sans">
+                <div class="flex h-screen">
+                    <!-- Sidebar Navigation -->
+                    <aside class="bg-gray-800 text-white w-64 flex-shrink-0 hidden md:block">
+                        <div class="p-4">
+                            <h1 class="text-2xl font-bold"></h1>
+                        </div>
+                        <nav class="mt-6">
+                            <ul>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/dashboard" class="flex items-center">
+                                        <span class="ml-2">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/users" class="flex items-center">
+                                        <span class="ml-2">User Management</span>
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/settings" class="flex items-center">
+                                        <span class="ml-2">System Settings</span>
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/logs" class="flex items-center">
+                                        <span class="ml-2">Logs</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <!-- Mobile sidebar toggle -->
+                    <div class="md:hidden fixed bottom-4 right-4 z-50">
+                        <button id="sidebarToggle" class="bg-gray-800 text-white p-3 rounded-full shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Mobile sidebar -->
+                    <div id="mobileSidebar" class="fixed inset-0 bg-gray-800 text-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h1 class="text-2xl font-bold">KnowUT Admin</h1>
+                            <button id="closeSidebar" class="text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <nav class="mt-6">
+                            <ul>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/dashboard" class="flex items-center">
+                                        <span class="ml-2">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/users" class="flex items-center">
+                                        <span class="ml-2">User Management</span>
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/settings" class="flex items-center">
+                                        <span class="ml-2">System Settings</span>
+                                    </a>
+                                </li>
+                                <li class="px-4 py-2 hover:bg-gray-700">
+                                    <a href="/admin/logs" class="flex items-center">
+                                        <span class="ml-2">Logs</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="flex-1 flex flex-col overflow-hidden">
+                        <!-- Top Bar -->
+                        <header class="bg-white shadow-sm">
+                            <div class="flex items-center justify-between p-4">
+                                <div class="flex items-center">
+                                    <h2 class="text-xl font-semibold">Admin Panel</h2>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="text-sm text-gray-600">Admin User</div>
+                                        <form method="post" action="/admin/logout" style="display: inline;">
+                                            <button type="submit" class="text-red-500 hover:text-red-700 bg-transparent border-none cursor-pointer">
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!-- Breadcrumbs -->
+                        <div class="bg-gray-50 px-4 py-2">
+                            <nav class="text-sm">
+                                <ol class="list-none p-0 inline-flex">
+                                    <li class="flex items-center">
+                                        <a href="/admin" class="text-blue-500">Admin</a>
+                                        <span class="mx-2">&gt;</span>
+                                    </li>
+                                    <li class="flex items-center" th:replace="${breadcrumb}">
+                                        Dashboard
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+
+                        <!-- Main Content -->
+                        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                            <div th:replace="${content}">
+                                <!-- Content will be replaced by child templates -->
+                                <p>Default content</p>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+                <!-- Simple JavaScript for mobile sidebar toggle -->
+                <script>
+                    document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+                        document.getElementById('mobileSidebar').classList.remove('-translate-x-full');
+                    });
+
+                    document.getElementById('closeSidebar')?.addEventListener('click', function() {
+                        document.getElementById('mobileSidebar').classList.add('-translate-x-full');
+                    });
+                </script>
+                </body>
+                </html><h1 class="text-2xl font-bold">KnowUT Admin</h1>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/dashboard" class="flex items-center">
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/users" class="flex items-center">
+                            <span class="ml-2">User Management</span>
+                        </a>
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/settings" class="flex items-center">
+                            <span class="ml-2">System Settings</span>
+                        </a>
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/logs" class="flex items-center">
+                            <span class="ml-2">Logs</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Mobile sidebar toggle -->
+        <div class="md:hidden fixed bottom-4 right-4 z-50">
+            <button id="sidebarToggle" class="bg-gray-800 text-white p-3 rounded-full shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile sidebar -->
+        <div id="mobileSidebar" class="fixed inset-0 bg-gray-800 text-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+            <div class="p-4 flex justify-between items-center">
+                <h1 class="text-2xl font-bold">KnowUT Admin</h1>
+                <button id="closeSidebar" class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/dashboard" class="flex items-center">
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/users" class="flex items-center">
+                            <span class="ml-2">User Management</span>
+                        </a>
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/settings" class="flex items-center">
+                            <span class="ml-2">System Settings</span>
+                        </a>
+                    </li>
+                    <li class="px-4 py-2 hover:bg-gray-700">
+                        <a href="/admin/logs" class="flex items-center">
+                            <span class="ml-2">Logs</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <div class="flex items-center">
+                        <h2 class="text-xl font-semibold">Admin Panel</h2>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-sm text-gray-600">Admin User</div>
+                            <form method="post" action="/admin/logout" style="display: inline;">
+                                <button type="submit" class="text-red-500 hover:text-red-700 bg-transparent border-none cursor-pointer">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Breadcrumbs -->
+            <div class="bg-gray-50 px-4 py-2">
+                <nav class="text-sm" th:fragment="breadcrumbs">
+                    <ol class="list-none p-0 inline-flex">
+                        <li class="flex items-center">
+                            <a href="/admin" class="text-blue-500">Admin</a>
+                            <span class="mx-2">&gt;</span>
+                        </li>
+                        <li class="flex items-center" th:if="${breadcrumb}" th:text="${breadcrumb}">
+                            Dashboard
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                <div th:replace="${content}">
+                    <!-- Content will be replaced by child templates -->
+                    <p>Default content</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Simple JavaScript for mobile sidebar toggle -->
+    <script>
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.getElementById('mobileSidebar').classList.remove('-translate-x-full');
+        });
+
+        document.getElementById('closeSidebar')?.addEventListener('click', function() {
+            document.getElementById('mobileSidebar').classList.add('-translate-x-full');
+        });
+    </script>
+</body>
+</html>
