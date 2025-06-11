@@ -3,7 +3,9 @@ package dev.jamiecraane.ktf
 import dev.jamiecraane.ktf.configuration.configureDI
 import dev.jamiecraane.ktf.configuration.configureDatabase
 import dev.jamiecraane.ktf.configuration.configureRouting
+import dev.jamiecraane.ktf.configuration.configureSecurity
 import dev.jamiecraane.ktf.configuration.configureTemplating
+import dev.jamiecraane.ktf.configuration.createAdminUserOfNotExists
 import dev.jamiecraane.ktf.users.UserService
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationStopPreparing
@@ -22,10 +24,11 @@ fun Application.module() {
         logger.info("Application received event ApplicationStopPreparing")
     }
 
-    val userService by inject<UserService>()
-
     configureDI()
+
     configureDatabase()
+    configureSecurity()
     configureRouting()
-    configureTemplating(userService)
+    configureTemplating()
+    createAdminUserOfNotExists(logger)
 }

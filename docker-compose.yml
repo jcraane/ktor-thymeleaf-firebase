@@ -3,10 +3,10 @@ version: '3.8'
 services:
   postgres:
     image: postgres
-    container_name: knowit-it-all
+    container_name: ktf
     environment:
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: knowitall
+      POSTGRES_DB: ktf
     ports:
       - "5438:5432"
     volumes:

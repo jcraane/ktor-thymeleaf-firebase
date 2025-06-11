@@ -1,7 +1,6 @@
 package dev.jamiecraane.ktf.configuration
 
 import dev.jamiecraane.ktf.security.ADMIN_AUTH
-import dev.jamiecraane.ktf.users.UserService
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.auth.authenticate
@@ -14,7 +13,7 @@ import org.thymeleaf.templatemode.TemplateMode
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import org.thymeleaf.templateresolver.FileTemplateResolver
 
-fun Application.configureTemplating(userService: UserService) {
+fun Application.configureTemplating() {
     install(Thymeleaf) {
         setTemplateResolver(
             (if (developmentMode) {

@@ -13,11 +13,13 @@ repositories {
 
 dependencies {
     implementation(libs.bundles.ktor)
+    implementation(libs.bundles.ktorClient)
     implementation(libs.bundles.exposed)
     implementation(libs.bundles.koin)
     implementation(libs.firebase.admin)
     implementation(libs.flyway)
     implementation(libs.hikariCP)
+    implementation(libs.postgresql)
     testImplementation(kotlin("test"))
 }
 

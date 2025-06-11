@@ -8,6 +8,7 @@ kotlinxSerialization = "1.7.3"
 flyway = "9.16.3"
 hikariCP = "5.1.0"
 koin = "4.0.3"
+postgresql = "42.7.3"
 
 [libraries]
 ktor-server-core-jvm = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
@@ -26,6 +27,12 @@ flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
 hikariCP = { module = "com.zaxxer:HikariCP", version.ref = "hikariCP" }
 koin-logger = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+ktor-client-core-jvm = { module = "io.ktor:ktor-client-core-jvm", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-logging-jvm = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
+ktor-client-content-negotiation-jvm = { module = "io.ktor:ktor-client-content-negotiation-jvm", version.ref = "ktor" }
 
 firebase-admin = { module = "com.google.firebase:firebase-admin", version.ref = "firebaseAdmin" }
 
@@ -35,6 +42,10 @@ thymeleaf = { module = "org.thymeleaf:thymeleaf", version.ref = "thymeleaf" }
 ktor = ["ktor-server-core-jvm", "ktor-server-auth", "ktor-server-auth-jwt", "ktor-server-sessions", "ktor-server-netty-cio", "ktor-server-thymeleaf"]
 exposed = ["exposed-core", "exposed-dao", "exposed-jdbc", "exposed-datetime", "exposed-json"]
 koin = ["koin-logger", "koin-ktor"]
+ktorClient = ["ktor-client-core",
+    "ktor-client-cio",
+    "ktor-client-core-jvm",
+    "ktor-client-logging-jvm", "ktor-client-content-negotiation-jvm"]
 
 [plugins]
 kotlin = { id = "jvm", version.ref = "kotlin" }
