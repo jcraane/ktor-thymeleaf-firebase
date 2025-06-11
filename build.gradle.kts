@@ -17,6 +17,7 @@ dependencies {
     implementation(libs.bundles.exposed)
     implementation(libs.bundles.koin)
     implementation(libs.firebase.admin)
+    implementation(libs.logback.classic)
     implementation(libs.flyway)
     implementation(libs.hikariCP)
     implementation(libs.postgresql)

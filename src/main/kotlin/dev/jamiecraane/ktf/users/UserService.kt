@@ -9,8 +9,6 @@ interface UserService {
     suspend fun createUser(
         firebaseId: String,
         email: String,
-        firstName: String,
-        lastName: String,
         roles: List<UserRole>
     ): User
 }

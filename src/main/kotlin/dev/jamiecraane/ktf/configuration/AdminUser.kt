@@ -47,9 +47,7 @@ private suspend fun createAdminUserOfNotExists(
             userService.createUser(
                 firebaseId = userRecord.uid,
                 email = email,
-                firstName = "admin",
-                lastName = "admin",
-                roles = listOf(UserRole.ADMIN)
+                roles = listOf(UserRole.ADMIN),
             )
         }
     } else {

@@ -19,7 +19,7 @@ fun Application.configureTemplating() {
             (if (developmentMode) {
                 FileTemplateResolver().apply {
                     cacheManager = null
-                    prefix = "backend/src/main/resources/templates/"
+                    prefix = "src/main/resources/templates/"
                 }
             } else {
                 ClassLoaderTemplateResolver().apply {
